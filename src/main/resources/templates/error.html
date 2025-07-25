@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Database Error</title>
+    <link th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-5">
+    <div class="alert alert-danger">
+        <h2>数据库连接错误</h2>
+        <p th:text="${error}"></p>
+        <p>请检查：</p>
+        <ul>
+            <li>MongoDB 服务是否运行</li>
+            <li>用户名和密码是否正确</li>
+            <li>用户权限是否足够</li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>
