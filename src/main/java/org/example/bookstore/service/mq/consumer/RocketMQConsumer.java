@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
     consumerGroup = "bookstore-consumer-group",
     selectorExpression = "*"  // 消费所有 Tag（可指定如 "tagA || tagB"）
 )
-public class MessageConsumer implements RocketMQListener<String> {
+public class RocketMQConsumer implements RocketMQListener<String> {
 
     @Override
     public void onMessage(String message) {

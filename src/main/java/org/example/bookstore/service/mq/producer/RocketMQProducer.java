@@ -1,18 +1,23 @@
 package org.example.bookstore.service.mq.producer;
 
+import org.apache.rocketmq.client.exception.MQClientException;
+import org.apache.rocketmq.client.producer.DefaultMQProducer;
 import org.apache.rocketmq.spring.core.RocketMQTemplate;
 import org.springframework.stereotype.Service;
 
+import java.util.Map;
+
 @Service
-public class MessageProducer {
+public class RocketMQProducer {
     private final RocketMQTemplate rocketMQTemplate;
 
-    public MessageProducer(RocketMQTemplate rocketMQTemplate) {
+    public RocketMQProducer(RocketMQTemplate rocketMQTemplate) {
         this.rocketMQTemplate = rocketMQTemplate;
     }
 
     // 发送字符串消息
-    public void sendMessage(String topic, String message) {
+    public void sendMessage(String topic, String message) throws MQClientException {
+        DefaultMQProducer producer = rocketMQTemplate.getProducer();
         rocketMQTemplate.convertAndSend(topic, message);
     }
 
