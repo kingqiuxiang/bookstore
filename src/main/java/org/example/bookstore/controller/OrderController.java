@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 @Controller
 public class OrderController {
+    private static final Logger logger = Logger.getLogger(OrderController.class.getName());
     @Autowired
     private OrderService orderService;
     @Autowired
@@ -35,7 +37,7 @@ public class OrderController {
 
         List<Order> allOrder = orderService.getAllOrder();
         kafkaProducerService.sendMessage("order-topic", "http request: get all orders, total: " + allOrder.size());
-
+        logger.info("getAllOrder: " + allOrder.size() + " orders retrieved.");
 //        for (int i = 0; i < 100000; i++) {
 //            kafkaProducerService.sendMessage("order-topic", "retry method send : http request: get all orders, total: " + allOrder.size());
 //        }

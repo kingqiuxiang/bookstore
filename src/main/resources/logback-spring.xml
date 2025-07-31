@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!-- 1. 定义LOGSTASH appender -->
+    <appender name="LOGSTASH" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+        <destination>127.0.0.1:5000</destination> <!-- 修改为你的Logstash地址 -->
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+            <customFields>{"appname":"bookstore"}</customFields>
+        </encoder>
+    </appender>
+
+    <!-- 2. 定义控制台输出 -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 3. 关键步骤：引用LOGSTASH appender -->
+    <root level="INFO">
+        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="LOGSTASH" /> <!-- 确保这里引用了LOGSTASH -->
+    </root>
+
+    <!-- 4. 可选：特定包日志级别 -->
+    <logger name="org.springframework" level="WARN"/>
+    <logger name="com.example.bookstore" level="DEBUG"/>
+</configuration>
