@@ -33,6 +33,7 @@
             <version>5.8.0</version>
         </dependency>
 
+
         <dependency>
             <groupId>org.apache.curator</groupId>
             <artifactId>curator-recipes</artifactId>
@@ -84,9 +85,9 @@
             <artifactId>jedis</artifactId>
         </dependency>
         <dependency>
-        <groupId>org.springframework.session</groupId>
-        <artifactId>spring-session-data-redis</artifactId>
-    </dependency>
+            <groupId>org.springframework.session</groupId>
+            <artifactId>spring-session-data-redis</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -133,6 +134,32 @@
             <artifactId>logstash-logback-encoder</artifactId>
             <version>8.1</version>
         </dependency>
+        <!--        es -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
+        </dependency>
+
+        <!-- Elasticsearch Java Client (推荐使用) -->
+        <dependency>
+            <groupId>co.elastic.clients</groupId>
+            <artifactId>elasticsearch-java</artifactId>
+            <version>8.11.4</version>
+        </dependency>
+
+        <!-- Jackson for JSON handling -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
+
+        <!-- Spring Data Elasticsearch -->
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-elasticsearch</artifactId>
+            <version>5.2.4</version> <!-- 与 Spring Boot 3.2.4 兼容 -->
+        </dependency>
+
     </dependencies>
 
     <build>

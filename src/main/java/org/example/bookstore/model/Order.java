@@ -3,9 +3,10 @@ package org.example.bookstore.model;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.elasticsearch.annotations.Field;
+import org.springframework.data.elasticsearch.annotations.FieldType;
 
 import java.io.Serializable;
-
 @Setter
 @Getter
 @Entity
@@ -14,7 +15,9 @@ public class Order implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Field(type = FieldType.Text, analyzer = "standard")
     private String bookId;
+    @Field(type = FieldType.Text, analyzer = "standard")
     private Integer quantity;
     // getters/setters
 
